@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra Elvas - Património da Humanidade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terracotta: #C85C3F;
+            --cream: #F7F3E9;
+            --deep-green: #2C4A3C;
+            --gold: #D4AF37;
+            --warm-white: #FFFBF5;
+            --stone: #8B7355;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--cream);
+            color: var(--deep-green);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--deep-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: var(--warm-white);
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease-out;
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-style: italic;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-family: 'Crimson Text', serif;
+            animation: fadeInUp 1.2s ease-out 0.2s backwards;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.8rem);
+            font-style: italic;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease-out 0.4s backwards;
+        }
+
+        .hero .address {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            letter-spacing: 0.05em;
+            opacity: 0.9;
+            animation: fadeInUp 1.2s ease-out 0.5s backwards;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto 1.5rem;
+            animation: fadeInUp 1.2s ease-out 0.3s backwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2rem;
+            color: var(--warm-white);
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .intro {
+            background: var(--warm-white);
+            padding: 5rem 0;
+        }
+
+        .intro-text {
+            font-size: 1.3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.9;
+        }
+
+        .intro-text strong {
+            color: var(--terracotta);
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--warm-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--terracotta), var(--stone));
+            padding: 2rem;
+            color: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 6s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .card-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .card-header .icon {
+            font-size: 3rem;
+            opacity: 0.3;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .establishment {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(200, 92, 63, 0.1);
+        }
+
+        .establishment:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .establishment h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--terracotta);
+            margin-bottom: 0.5rem;
+        }
+
+        .establishment p {
+            font-size: 1.05rem;
+            color: var(--deep-green);
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .establishment .highlight {
+            background: linear-gradient(120deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            padding: 0.8rem 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .establishment a {
+            color: var(--terracotta);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .establishment a:hover {
+            color: var(--deep-green);
+            transform: translateX(5px);
+        }
+
+        .establishment a::after {
+            content: ' →';
+            margin-left: 0.5rem;
+        }
+
+        .excursions {
+            background: var(--deep-green);
+            color: var(--warm-white);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .excursions::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(30deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(150deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03));
+            background-size: 80px 140px;
+            opacity: 0.3;
+        }
+
+        .excursions .section-title {
+            color: var(--gold);
+        }
+
+        .excursion-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .excursion-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            transform: scale(1.02);
+        }
+
+        .excursion-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .excursion-card .distance {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .parking {
+            background: var(--warm-white);
+            padding: 4rem 0;
+        }
+
+        .parking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .parking-item {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parking-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--terracotta), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .parking-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .parking-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .parking-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            margin-bottom: 0.5rem;
+        }
+
+        .parking-item .tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--deep-green);
+            color: var(--warm-white);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            background: var(--deep-green);
+            color: var(--warm-white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .footer .gold-text {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .card-header .icon {
+                display: none;
+            }
+        }
+
+        .stagger-animation {
+            opacity: 0;
+            animation: fadeInStagger 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInStagger {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <img src="ValadasTrinidad Icone_PNG.png" alt="Avenida Logo" class="hero-logo">
+            <h1>AVENIDA</h1>
+            <p class="tagline">Just Like Home</p>
+            <div class="divider"></div>
+            <p class="subtitle">Alojamento Local em Elvas</p>
+            <p class="address">Avenida da Piedade, 58 - B, Elvas</p>
+        </div>
+        <div class="scroll-indicator"></div>
+    </div>
+
+    <div class="intro">
+        <div class="container">
+            <p class="intro-text">
+                O <strong>Avenida</strong> é o seu lar em Elvas, a cidade-forte mais representativa da escola de fortificação abaluartada europeia. 
+                Estrategicamente localizado na Avenida da Piedade , oferecemos-lhe acesso privilegiado ao <strong>Património Mundial da UNESCO</strong>, 
+                ao maior aqueduto da Península Ibérica, e à autêntica gastronomia alentejana. 
+                Descubra Elvas com o conforto de se sentir em casa.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Pastelarias & Doçaria</h2>
+        <div class="grid">
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🥐</span>
+                    <h3>A Paloma</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Ideal para tomar o pequeno-almoço, a um quarteirão da Avenida.</p>
+                        <div class="highlight">Pastelaria de fabrico próprio, excelente pequeno-almoço e o autêntico Pastel de Nata (Belém)</div>
+                        <a href="https://maps.app.goo.gl/qsu3bFemHW9hZP6h6" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">☕</span>
+                    <h3>Coffee Time Aqueduto</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Ideal para o pequeno-almoço ou refeição ligeira, com vista para o Aqueduto da Amoreira.</p>
+                        <div class="highlight">Pastelaria portuguesa com foco nos croissants e crepes</div>
+                        <a href="https://maps.app.goo.gl/uN8UFVRr51kXqbVXA" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🍰</span>
+                    <h3>Pastelaria Canhão</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Especialidade única e imperdível!</p>
+                        <div class="highlight">Único Sericaia confeccionado em forno de lenha. Take-away exclusivo - recomendável ligar antecipadamente</div>
+                        <a href="https://maps.app.goo.gl/PhMYZ9bLaDFK55ZD8" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Restaurantes</h2>
+        <div class="grid">
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🍷</span>
+                    <h3>Adega Regional</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Restaurante que serve cozinha tradicional alentejana sob tetos abobadados do século XVII.</p>
+                        <div class="highlight">Comida tradicional em restaurante de qualidade</div>
+                        <a href="https://maps.app.goo.gl/AAxRjzvj77g1YKQY9" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🍴</span>
+                    <h3>Recanto de São Paulo</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Localizado junto ao Mercado Municipal Casa das Barcas, com base na rica culinária regional.</p>
+                        <div class="highlight">Comida tradicional em restaurante de qualidade</div>
+                        <a href="https://maps.app.goo.gl/p9DtnX2PUveSndgH6" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🌅</span>
+                    <h3>Alcalá Restaurant & Sky Lounge</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Terraço moderno com vistas privilegiadas para o Aqueduto da Amoreira.</p>
+                        <div class="highlight">Comida moderna em restaurante de qualidade</div>
+                        <a href="https://maps.app.goo.gl/cjtpBZ38KE9sYZCs8" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🍕</span>
+                    <h3>Nonna Bia</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Pratos especiais mensais inspirados nos ingredientes da época e nas famosas pizzarias napolitanas.</p>
+                        <div class="highlight">Comida italiana em restaurante de qualidade</div>
+                        <a href="https://maps.app.goo.gl/9Y2PNfJSx2SJSsok7" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">✨</span>
+                    <h3>Acontece</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Restaurante de autor com experiências únicas, esplanada atraente e decoração contemporânea.</p>
+                        <div class="highlight">Comida sofisticada em restaurante de design</div>
+                        <a href="https://maps.app.goo.gl/ZirRh4D5CvKBKJzS8" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🦞</span>
+                    <h3>El Cristo</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <div class="highlight">Considerada uma das melhores marisqueiras de Portugal</div>
+                        <a href="https://maps.app.goo.gl/BG4AJFB3dG87wkAc8" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 5rem;">Arredores de Elvas</h2>
+        <div class="grid">
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🏘️</span>
+                    <h3>Pata Larga - Juromenha</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <div class="highlight">Comida caseira com atendimento intimista em restaurante de aldeia</div>
+                        <a href="https://maps.app.goo.gl/haaz7ZyQcu31Ew5TA" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🦌</span>
+                    <h3>Pompílio - São Vicente</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <div class="highlight">Comida tradicional e caça em restaurante de qualidade</div>
+                        <a href="https://maps.app.goo.gl/KyPXyzrC2uzFQxiS6" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="excursions">
+        <div class="container">
+            <h2 class="section-title">Sugestões de Passeios</h2>
+            <div class="grid">
+                <div class="excursion-card stagger-animation">
+                    <h3>Juromenha</h3>
+                    <p class="distance">📍 17,5 km de Elvas</p>
+                    <p>Aldeia medieval com castelo e miradouro privilegiado para Espanha e o Rio Guadiana. Uma viagem ao passado medieval português.</p>
+                    <a href="https://goo.gl/maps/qBAVeHE31rmzyApH8" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+
+                <div class="excursion-card stagger-animation">
+                    <h3>Marvão</h3>
+                    <p class="distance">📍 77,3 km de Elvas</p>
+                    <p>Vila abaluartada raiana com castelo, ruas estreitas e vistas absolutamente deslumbrantes sobre a serra e fronteira.</p>
+                    <a href="https://goo.gl/maps/dFBbMRT32pqMB9po7" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+
+                <div class="excursion-card stagger-animation">
+                    <h3>Monsaraz</h3>
+                    <p class="distance">📍 69,7 km de Elvas</p>
+                    <p>Aldeia medieval em perfeito estado de conservação, com miradouro espetacular para o espelho de água da Barragem do Alqueva.</p>
+                    <a href="https://goo.gl/maps/MWw1fFQdjqAVAfJA8" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parking">
+        <div class="container">
+            <h2 class="section-title">Estacionamento</h2>
+            <div class="parking-grid">
+                <div class="parking-item">
+                    <h4>Praça da República</h4>
+                    <p>Subterrâneo, 1ª hora gratuita</p>
+                    <span class="tag">Não aconselhável a veículos grandes</span>
+                    <br><a href="https://goo.gl/maps/5Tix55jzNZXSFbWu5" target="_blank">Ver no mapa →</a>
+                </div>
+
+                <div class="parking-item">
+                    <h4>Praça de Armas</h4>
+                    <span class="tag">Gratuito</span>
+                    <span class="tag" style="background: var(--terracotta);">Aconselhável a veículos grandes</span>
+                    <br><a href="https://goo.gl/maps/BLvCWRRELofCV47E7" target="_blank">Ver no mapa →</a>
+                </div>
+
+                <div class="parking-item">
+                    <h4>Estacionamento Shell</h4>
+                    <span class="tag">Gratuito</span>
+                    <br><a href="https://goo.gl/maps/LWLKETsK2MXDjQUn6" target="_blank">Ver no mapa →</a>
+                </div>
+
+                <div class="parking-item">
+                    <h4>Parque Casa das Barcas</h4>
+                    <p>Acesso através das muralhas a novo parque de grandes dimensões</p>
+                    <span class="tag">Gratuito</span>
+                    <span class="tag" style="background: var(--terracotta);">Aconselhável a veículos grandes</span>
+                    <br><a href="https://goo.gl/maps/1rEaiMaiYGzj9BFx9" target="_blank">Ver no mapa →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding: 5rem 2rem;">
+        <h2 class="section-title">Locais de Interesse</h2>
+        <div class="grid">
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🏰</span>
+                    <h3>Castelo de Elvas</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Visita obrigatória ao Castelo e ruas circundantes. Aproveite para conhecer a Fábrica Museu da Ameixa de Elvas.</p>
+                        <a href="https://goo.gl/maps/pGN14FSZkz9rZH1M6" target="_blank">Ver Castelo</a>
+                        <br>
+                        <a href="https://goo.gl/maps/sZMxK5sf9gRnubAn6" target="_blank">Ver Fábrica Museu da Ameixa</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">🏛️</span>
+                    <h3>Muralhas e Fortificações</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Sistema de fortificações abaluartadas único. Recomendamos visita noturna de carro pela circular da cidade.</p>
+                        <div class="highlight">Durante o dia, percorra a zona de fossos desde o museu militar</div>
+                        <a href="https://goo.gl/maps/aSNqL5NW8Jd6zjMg8" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">💧</span>
+                    <h3>Aqueduto da Amoreira</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <div class="highlight">Maior aqueduto da Península Ibérica com 8,5 km de extensão, datado de 1498</div>
+                        <a href="https://goo.gl/maps/qxJF5qeC4oUBUTBA6" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">⛪</span>
+                    <h3>Capela N. Sra. da Conceição</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Situada sob a cintura de muralhas com miradouro privilegiado sobre a cidade.</p>
+                        <a href="https://goo.gl/maps/9W9xEPLKhTRFGHSH8" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">ℹ️</span>
+                    <h3>Posto de Turismo</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">
+                        <p>Situado na Praça da República, ideal para recolher informação sobre Elvas e a região.</p>
+                        <a href="https://goo.gl/maps/1mmQAauJNFjGkJMW7" target="_blank">Ver localização</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p><span class="gold-text">Avenida</span> • Just Like Home</p>
+            <p style="margin-top: 0.5rem;">Avenida da Piedade 58 - B, Elvas</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem;">Descubra Elvas • Património Mundial da UNESCO • Alentejo • Portugal</p>
+        </div>
+    </div>
+</body>
+</html>
