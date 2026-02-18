@@ -517,6 +517,66 @@
             }
         }
 
+        /* ── STICKY NAV ── */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(44, 74, 60, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+        }
+
+        .top-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .top-nav-inner::-webkit-scrollbar { display: none; }
+
+        .top-nav-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.05rem;
+            font-weight: 700;
+            white-space: nowrap;
+            padding: 1rem 1rem 1rem 0;
+            margin-right: 0.5rem;
+            border-right: 1px solid rgba(255,255,255,0.15);
+            flex-shrink: 0;
+        }
+
+        .top-nav a {
+            color: rgba(255, 251, 245, 0.85);
+            text-decoration: none;
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            white-space: nowrap;
+            padding: 1rem 0.75rem;
+            flex-shrink: 0;
+            transition: color 0.2s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .top-nav a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .top-nav-brand { display: none; }
+            .top-nav a { font-size: 0.9rem; padding: 0.85rem 0.6rem; }
+        }
+
         .stagger-animation {
             opacity: 0;
             animation: fadeInStagger 0.8s ease-out forwards;
@@ -537,6 +597,20 @@
     </style>
 </head>
 <body>
+    <!-- STICKY NAV -->
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav-inner">
+            <span class="top-nav-brand">AVENIDA</span>
+            <a href="#sec-pastelarias">🥐 Pastelarias</a>
+            <a href="#sec-restaurantes">🍴 Restaurantes</a>
+            <a href="#sec-arredores">🏘️ Arredores</a>
+            <a href="#sec-passeios">🗺️ Passeios</a>
+            <a href="#sec-estacionamento">🅿️ Estacionamento</a>
+            <a href="#sec-locais">🏰 Locais de Interesse</a>
+            <a href="#sec-verao">☀️ Verão</a>
+        </div>
+    </nav>
+
     <div class="hero">
         <div class="hero-content">
             <img src="ValadasTrinidad Icone_PNG.png" alt="Avenida Logo" class="hero-logo">
@@ -565,7 +639,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="sec-pastelarias">
         <h2 class="section-title">Pastelarias & Doçaria</h2>
         <div class="grid">
             <div class="card stagger-animation">
@@ -612,7 +686,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="sec-restaurantes">
         <h2 class="section-title">Restaurantes</h2>
         <div class="grid">
             <div class="card stagger-animation">
@@ -713,7 +787,7 @@
 
         </div>
 
-        <h2 class="section-title" style="margin-top: 5rem;">Arredores de Elvas</h2>
+        <h2 class="section-title" id="sec-arredores" style="margin-top: 5rem;">Arredores de Elvas</h2>
         <div class="grid">
             <div class="card stagger-animation">
                 <div class="card-header">
@@ -770,7 +844,7 @@
         </div>
     </div>
 
-    <div class="excursions">
+    <div class="excursions" id="sec-passeios">
         <div class="container">
             <h2 class="section-title">Sugestões de Passeios</h2>
             <div class="grid">
@@ -798,7 +872,7 @@
         </div>
     </div>
 
-    <div class="parking">
+    <div class="parking" id="sec-estacionamento">
         <div class="container">
             <h2 class="section-title">Estacionamento</h2>
             <div class="parking-grid">
@@ -833,7 +907,7 @@
         </div>
     </div>
 
-    <div class="container" style="padding: 5rem 2rem;">
+    <div class="container" id="sec-locais" style="padding: 5rem 2rem;">
         <h2 class="section-title">Locais de Interesse</h2>
         <div class="grid">
             <div class="card stagger-animation">
@@ -906,7 +980,7 @@
         </div>
     </div>
 
-    <div class="summer">
+    <div class="summer" id="sec-verao">
         <div class="container">
             <h2 class="section-title">☀️ Se o Tempo Permitir...</h2>
             <p class="summer-intro">Nos dias quentes do verão, aproveite para refrescar-se nas piscinas e praias fluviais da região.</p>
@@ -968,5 +1042,20 @@
             <p style="margin-top: 1rem; font-size: 0.95rem;">Descubra Elvas • Património Mundial da UNESCO • Alentejo • Portugal</p>
         </div>
     </div>
+    <script>
+        // Smooth scroll with offset for fixed nav
+        const nav = document.getElementById('topNav');
+        document.querySelectorAll('.top-nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    const offset = nav.offsetHeight + 16;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
