@@ -314,6 +314,59 @@
             margin-left: 0.5rem;
         }
 
+        .summer {
+            background: linear-gradient(135deg, #1a3a5c 0%, #0d2b45 100%);
+            color: var(--warm-white);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 10% 20%, rgba(100, 200, 255, 0.05) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        }
+
+        .summer .section-title {
+            color: #64c8ff;
+        }
+
+        .summer .section-title::after {
+            background: var(--gold);
+        }
+
+        .summer-intro {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .summer-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .summer .excursion-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .summer .excursion-card:hover {
+            border-color: #64c8ff;
+        }
+
+        .summer .excursion-card h3 {
+            color: #64c8ff;
+            font-size: 1.4rem;
+        }
+
         .excursions {
             background: var(--deep-green);
             color: var(--warm-white);
@@ -848,6 +901,61 @@
                         <p>Situado na Praça da República, ideal para recolher informação sobre Elvas e a região.</p>
                         <a href="https://goo.gl/maps/1mmQAauJNFjGkJMW7" target="_blank">Ver localização</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="summer">
+        <div class="container">
+            <h2 class="section-title">☀️ Se o Tempo Permitir...</h2>
+            <p class="summer-intro">Nos dias quentes do verão, aproveite para refrescar-se nas piscinas e praias fluviais da região.</p>
+
+            <h3 class="summer-subtitle">Em Elvas</h3>
+            <div class="grid">
+                <div class="excursion-card stagger-animation">
+                    <h3>🏊 Piscinas Municipais de Elvas</h3>
+                    <p class="distance">Públicas – Descobertas e cobertas mediante a época do ano</p>
+                    <a href="https://goo.gl/maps/SQJMWpSPTKCFykL2A" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+
+                <div class="excursion-card stagger-animation">
+                    <h3>🏊 Piscina José Vicente Abreu</h3>
+                    <p class="distance">Clube Elvense de Natação – Descobertas mediante a época do ano</p>
+                    <a href="https://goo.gl/maps/xbz2eMpbwhA5wTP47" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+
+                <div class="excursion-card stagger-animation">
+                    <h3>🏊 Piscinas Elxadai</h3>
+                    <p class="distance">Unidade Hoteleira – Descobertas mediante a época do ano</p>
+                    <a href="https://goo.gl/maps/TCJM3XP3RshGmFy29" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+            </div>
+
+            <h3 class="summer-subtitle" style="margin-top: 3rem;">Na Região</h3>
+            <div class="grid">
+                <div class="excursion-card stagger-animation">
+                    <h3>🏖️ Praia Fluvial de Azenhas d'El Rei</h3>
+                    <p class="distance">📍 52,7 km de Avenida · Alandroal</p>
+                    <a href="https://goo.gl/maps/BNfq9G3JqFdMZZUZ6" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+
+                <div class="excursion-card stagger-animation">
+                    <h3>🌊 Piscinas Naturales de La Codosera</h3>
+                    <p class="distance">📍 55,3 km de Avenida · Espanha</p>
+                    <a href="https://goo.gl/maps/1ge4KtgAjAZPuCDWA" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+
+                <div class="excursion-card stagger-animation">
+                    <h3>🏖️ Praia Fluvial de Monsaraz</h3>
+                    <p class="distance">📍 71,2 km de Avenida</p>
+                    <a href="https://goo.gl/maps/uH5XVZ2C2QZ6MREs9" target="_blank" style="color: var(--gold);">Ver localização →</a>
+                </div>
+
+                <div class="excursion-card stagger-animation">
+                    <h3>🎢 Parque Aquático AquaBadajoz</h3>
+                    <p class="distance">📍 14,7 km de Avenida · Badajoz, Espanha</p>
+                    <a href="https://g.page/AQUABadajoz?share" target="_blank" style="color: var(--gold);">Ver localização →</a>
                 </div>
             </div>
         </div>
